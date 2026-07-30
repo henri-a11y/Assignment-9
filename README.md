@@ -1,16 +1,16 @@
-# Handwritten Digit Recognition using Artificial Neural Networks (ANN)
+# Image Classification using Convolutional Neural Networks (CNN)
 
 ## Objective
 
-The objective of this project is to develop an Artificial Neural Network (ANN) to classify handwritten digits (0–9) using the MNIST Handwritten Digits dataset. This project demonstrates the complete deep learning workflow, including data understanding, preprocessing, model development, training, evaluation, and visualization of model performance using TensorFlow/Keras.
+The objective of this project is to develop a Convolutional Neural Network (CNN) to classify images of cats and dogs. This project demonstrates the complete deep learning workflow, including image preprocessing, data generation, CNN model development, training, evaluation, and visualization of model performance using TensorFlow/Keras.
 
 ---
 
 ## Dataset Link
 
-**MNIST Handwritten Digits Dataset**
+**Cats vs Dogs Dataset**
 
-Kaggle: https://www.kaggle.com/datasets/oddrationale/mnist-in-csv
+Kaggle: https://www.kaggle.com/datasets/bhavikjikadara/dog-and-cat-classification-dataset
 
 ---
 
@@ -18,24 +18,27 @@ Kaggle: https://www.kaggle.com/datasets/oddrationale/mnist-in-csv
 
 The following Python libraries were used in this project:
 
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
 - TensorFlow / Keras
+- NumPy
+- Pandas
+- Matplotlib
 - Scikit-learn
 
 Modules from TensorFlow/Keras:
 
+- ImageDataGenerator
 - Sequential
+- Conv2D
+- MaxPooling2D
+- Flatten
 - Dense
-- to_categorical
 
 Modules from Scikit-learn:
 
-- train_test_split
 - confusion_matrix
-- classification_report
+- precision_score
+- recall_score
+- f1_score
 
 ---
 
@@ -43,38 +46,42 @@ Modules from Scikit-learn:
 
 The project was completed using the following steps:
 
-1. Loaded the MNIST dataset using Pandas.
-2. Explored the dataset by displaying the first few records, dataset dimensions, and summary information.
-3. Checked for missing values and separated the input features and target variable.
-4. Normalized the pixel values to the range **0–1**.
-5. Split the dataset into training (80%) and testing (20%) sets.
-6. Converted the target labels into categorical format using **One-Hot Encoding**.
-7. Built an Artificial Neural Network (ANN) with two hidden layers containing **128** and **64** neurons using ReLU activation.
-8. Used a Softmax output layer with **10 neurons** for digit classification.
-9. Compiled the model using the **Adam optimizer** and **Categorical Crossentropy** loss function.
-10. Trained the model for **10 epochs**.
-11. Evaluated the model using Test Accuracy, Confusion Matrix, and Classification Report.
-12. Visualized training performance using Accuracy vs Epoch and Loss vs Epoch graphs.
+1. Loaded the Cats vs Dogs image dataset.
+2. Displayed the dataset folder structure and sample images.
+3. Resized all images to **128 × 128** pixels.
+4. Normalized pixel values to the range **0–1**.
+5. Split the dataset into **80% training** and **20% testing**.
+6. Created image data generators using TensorFlow/Keras.
+7. Built a Convolutional Neural Network (CNN) with three convolutional layers followed by max-pooling layers, a flatten layer, and dense layers.
+8. Compiled the model using the **Adam optimizer**, **Binary Crossentropy** loss function, and **Accuracy** metric.
+9. Trained the model for **10 epochs**.
+10. Evaluated the model using Test Accuracy, Precision, Recall, F1-Score, and a Confusion Matrix.
+11. Visualized model performance using Accuracy vs Epoch and Loss vs Epoch graphs.
 
 ---
 
-## Model Architecture
+## CNN Architecture
 
-The Artificial Neural Network consists of:
+The CNN model consists of:
 
-- **Input Layer:** 784 input features (28 × 28 pixels)
-- **Hidden Layer 1:** 128 neurons with ReLU activation
-- **Hidden Layer 2:** 64 neurons with ReLU activation
-- **Output Layer:** 10 neurons with Softmax activation for multi-class classification
+- **Conv2D:** 32 filters (3×3), ReLU
+- **MaxPooling2D:** 2×2
+- **Conv2D:** 64 filters (3×3), ReLU
+- **MaxPooling2D:** 2×2
+- **Conv2D:** 128 filters (3×3), ReLU
+- **MaxPooling2D:** 2×2
+- **Flatten Layer**
+- **Dense Layer:** 128 neurons, ReLU
+- **Output Layer:** 1 neuron with Sigmoid activation
 
 ---
 
 ## Results
 
-The ANN model successfully classified handwritten digits from the MNIST dataset. Model performance was evaluated using Test Accuracy, Confusion Matrix, and Classification Report. The Accuracy vs Epoch and Loss vs Epoch graphs demonstrated the learning progress of the network during training. The trained model achieved high classification performance, indicating that Artificial Neural Networks are highly effective for image recognition tasks.
+The CNN model successfully classified images into **Cat** and **Dog** categories. Model performance was evaluated using Test Accuracy, Precision, Recall, F1-Score, and a Confusion Matrix. The Accuracy vs Epoch and Loss vs Epoch graphs illustrated the learning progress during training. The trained CNN achieved strong classification performance, demonstrating its effectiveness for image recognition tasks.
 
 ---
 
 ## Conclusion
 
-This project demonstrates the effectiveness of Artificial Neural Networks (ANNs) for handwritten digit recognition using the MNIST dataset. After preprocessing the data and training the model, the ANN successfully classified digits with high accuracy. The hidden layers enabled the network to learn complex patterns from pixel values, significantly improving prediction performance. Compared to traditional machine learning algorithms, deep learning models can automatically learn meaningful feature representations from raw data. However, one limitation of ANNs is that they require more computational resources and training time, especially when working with large datasets and deeper network architectures. Overall, the ANN provides an accurate and reliable solution for handwritten digit classification.
+This project demonstrates the effectiveness of Convolutional Neural Networks (CNNs) for image classification using the Cats vs Dogs dataset. By combining convolutional and pooling layers, the model automatically learned important visual features while reducing the dimensionality of the input images. CNNs provide a significant advantage over traditional Artificial Neural Networks for image classification because they efficiently capture spatial patterns and local features. However, one limitation of CNNs is that they require large labeled datasets and considerable computational resources for effective training. Overall, the CNN model provides an accurate and reliable solution for binary image classification tasks.
